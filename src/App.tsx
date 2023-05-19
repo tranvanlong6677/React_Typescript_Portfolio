@@ -1,13 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import Video5 from "./examples/Video5";
-import Video7 from "./examples/Video7";
-
 import "./App.css";
-import Video9 from "./examples/Video9";
-import Video10 from "./examples/Video10/Video10";
-import Video13 from "./examples/Video13";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,8 +28,6 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-
-      <Video10 defaultName="long" defaultAge={23} />
     </div>
   );
 }
