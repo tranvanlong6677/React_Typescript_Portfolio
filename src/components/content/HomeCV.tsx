@@ -23,7 +23,13 @@ const HomeCV = () => {
                 <p style={{ marginTop: "30px", fontSize: "30px" }}>
                   <span>{"I'm a "}</span>
                   <TypeAnimation
-                    sequence={["Frontend Developer (ReactJS)", 1000, () => {}]}
+                    sequence={[
+                      "Frontend Developer (ReactJS)",
+                      1000,
+                      "Gamer",
+                      2000,
+                      () => {},
+                    ]}
                     wrapper="span"
                     cursor={true}
                     repeat={Infinity}
