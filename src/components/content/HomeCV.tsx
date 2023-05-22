@@ -1,6 +1,12 @@
 import { TypeAnimation } from "react-type-animation";
-
+import imgAvt from "assets/img/hero/avt.jpg";
 const HomeCV = () => {
+  const handleScrollToAbout = () => {
+    const section = document.querySelector("#about");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <div className="arlo_tm_section" id="home">
       <div className="arlo_tm_hero_header_wrap">
@@ -12,7 +18,7 @@ const HomeCV = () => {
           <div className="content hero">
             <div className="inner_content">
               <div className="image_wrap">
-                <img src="img/hero/avt.jpg" alt="hero" />
+                <img src={imgAvt} alt="hero" />
               </div>
               <div className="name_holder">
                 <h3>
@@ -38,7 +44,13 @@ const HomeCV = () => {
               </div>
             </div>
           </div>
-          <div className="arlo_tm_arrow_wrap bounce anchor">
+          <div
+            className="arlo_tm_arrow_wrap bounce anchor"
+            onClick={(e) => {
+              handleScrollToAbout();
+              e.preventDefault();
+            }}
+          >
             <a href="#about">
               <i className="xcon-angle-double-down"></i>
             </a>

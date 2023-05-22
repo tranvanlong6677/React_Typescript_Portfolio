@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Preloader from "components/Preloader";
 import RightPart from "components/RightPart";
 import LeftPart from "components/LeftPart";
 import MobileMenu from "components/Mobile/MobileMenu";
 import { FloatButton } from "antd";
+import { isMobile } from "react-device-detect";
+import logoMobile from "assets/img/logo/mobile_logo.png";
 
 const Portfolio = () => {
-  const [hideLeft, setHideLeft] = useState<boolean>(true);
-
+  const [hideLeft, setHideLeft] = useState<boolean>(false);
+  useEffect(() => {
+    if (isMobile) {
+      setHideLeft(true);
+    }
+  }, [isMobile]);
   return (
     <div className="arlo_tm_wrapper_all">
       <div id="arlo_tm_popup_blog">
@@ -20,23 +26,7 @@ const Portfolio = () => {
       </div>
       {/* <Preloader /> */}
 
-      <div className="arlo_tm_mobile_header_wrap">
-        <div className="main_wrap">
-          <div className="logo">
-            <a href="index.html">
-              <img src="img/logo/mobile_logo.png" alt="mobile_logo" />
-            </a>
-          </div>
-          <div className="arlo_tm_trigger">
-            <div className="hamburger hamburger--collapse-r">
-              <div className="hamburger-box">
-                <div className="hamburger-inner"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <MobileMenu />
-      </div>
+      <MobileMenu />
       <div className="arlo_tm_content">
         <LeftPart hideLeft={hideLeft} setHideLeft={setHideLeft} />
         <RightPart hideLeft={hideLeft} setHideLeft={setHideLeft} />

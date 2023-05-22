@@ -1,4 +1,6 @@
 import logoDesktop from "assets/img/logo/desktop-logo.png";
+import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 interface IProps {
   hideLeft: boolean;
@@ -6,6 +8,32 @@ interface IProps {
 }
 const LeftPart = (props: IProps) => {
   const { hideLeft, setHideLeft } = props;
+  const [activeTab, setActiveTab] = useState<string>("home");
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const tab = hash.replace("#", "");
+      setActiveTab(tab);
+      const section = document.querySelector(`${hash}`);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, []);
+  const handleClickTab = (
+    tab: string,
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    setActiveTab(tab);
+    event.preventDefault();
+    const section = document.querySelector(`#${tab}`);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        window.location.hash = tab;
+      }, 500);
+    }
+  };
 
   return (
     <>
@@ -23,19 +51,59 @@ const LeftPart = (props: IProps) => {
           <div className="menu_list_wrap">
             <ul className="anchor_nav">
               <li>
-                <a href="#home">Home</a>
+                <a
+                  href="#home"
+                  className={activeTab === "home" ? "active" : ""}
+                  onClick={(
+                    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleClickTab("home", event)}
+                >
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#about">About me</a>
+                <a
+                  href="#about"
+                  onClick={(
+                    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleClickTab("about", event)}
+                  className={activeTab === "about" ? "active" : ""}
+                >
+                  About me
+                </a>
               </li>
               <li>
-                <a href="#skills">Skills</a>
+                <a
+                  href="#skills"
+                  className={activeTab === "skills" ? "active" : ""}
+                  onClick={(
+                    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleClickTab("skills", event)}
+                >
+                  Skills
+                </a>
               </li>
               <li>
-                <a href="#projects">Projects</a>
+                <a
+                  href="#projects"
+                  className={activeTab === "projects" ? "active" : ""}
+                  onClick={(
+                    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleClickTab("projects", event)}
+                >
+                  Projects
+                </a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a
+                  href="#contact"
+                  className={activeTab === "contact" ? "active" : ""}
+                  onClick={(
+                    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleClickTab("contact", event)}
+                >
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
@@ -70,17 +138,24 @@ const LeftPart = (props: IProps) => {
               </ul>
             </div>
           </div>
-          <a
-            className={hideLeft ? "arlo_tm_resize opened" : "arlo_tm_resize "}
-            href="#"
-            onClick={() => setHideLeft(!hideLeft)}
-          >
-            {hideLeft === true ? (
-              <i className="xcon-angle-right"></i>
-            ) : (
-              <i className="xcon-angle-left"></i>
-            )}
-          </a>
+          {!isMobile ? (
+            <a
+              className={hideLeft ? "arlo_tm_resize opened" : "arlo_tm_resize "}
+              href="#"
+              onClick={(e) => {
+                setHideLeft(!hideLeft);
+                e.preventDefault();
+              }}
+            >
+              {hideLeft === true ? (
+                <i className="xcon-angle-right"></i>
+              ) : (
+                <i className="xcon-angle-left"></i>
+              )}
+            </a>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

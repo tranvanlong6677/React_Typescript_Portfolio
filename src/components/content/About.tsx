@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import imgAvt from "assets/img/hero/avt.jpg";
 import CV from "assets/CV.pdf";
 import { TypeAnimation } from "react-type-animation";
-
+import Parallax from "parallax-js";
+import imgLayer from "assets/img/about/550x640.jpg";
 const About = () => {
+  const sceneEl = useRef<any>(null);
+
+  useEffect(() => {
+    if (sceneEl && sceneEl.current) {
+      const parallaxInstance = new Parallax(sceneEl?.current, {
+        relativeInput: true,
+        hoverOnly: true,
+      });
+      parallaxInstance.enable();
+
+      return () => parallaxInstance.disable();
+    }
+  }, []);
   return (
     <div className="arlo_tm_section relative" id="about">
       <div className="arlo_tm_about_wrapper_all">
@@ -16,19 +30,20 @@ const About = () => {
             <div className="author_wrap">
               <div className="leftbox">
                 <div
+                  ref={sceneEl}
                   className="about_image_wrap parallax"
                   data-relative-input="true"
                 >
-                  <div className="image layer" data-depth="0.1">
-                    <img
-                      src={imgAvt}
-                      alt="550x640"
-                      style={{ width: 550, height: 360, opacity: 1 }}
-                    />
-                    <div className="inner" data-img-url="img/about/1.jpg"></div>
+                  <div className="image layer" data-depth="0.2">
+                    <img src={imgLayer} alt="550x640" />
+                    <div
+                      className="inner"
+                      data-img-url={imgAvt}
+                      style={{ backgroundImage: `url(${imgAvt})` }}
+                    ></div>
                   </div>
-                  <div className="border layer" data-depth="0.2">
-                    <img src="img/about/550x640.jpg" alt="550x640" />
+                  <div className="border layer" data-depth="0.6">
+                    <img src={imgLayer} alt="550x640" />
                     <div className="inner"></div>
                   </div>
                 </div>

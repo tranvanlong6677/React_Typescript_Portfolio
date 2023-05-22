@@ -404,6 +404,9 @@ img.svg {
                             width: 35px;
                         }
                     }
+                    &.active {
+                        color: $color_3;
+                    }
                 }
             }
         }
@@ -523,7 +526,6 @@ img.svg {
     height: auto;
     clear: both;
     float: left;
-    margin-bottom: 100px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -693,7 +695,7 @@ img.svg {
         box-sizing: border-box;
     }
     .overlay_image.hero {
-        background-image: url(../img/hero/HoangHan.jpg);
+        background-image: url(../assets/img/hero/HoangHan.jpg);
     }
     .overlay_color.hero {
         background-color: $background-color_4;
@@ -702,7 +704,7 @@ img.svg {
         height: 100vh;
     }
     .overlay_image.testimonial {
-        background-image: url(../img/hero/3.jpg);
+        background-image: url(../assets/img/hero/3.jpg);
     }
     .overlay_color.testimonial {
         background-color: $background-color_4;
@@ -953,6 +955,9 @@ img.svg {
 }
 .arlo_tm_title_holder.contact {
     padding-bottom: 93px;
+}
+#about {
+    padding-top: 100px;
 }
 .arlo_tm_about_wrapper_all {
     width: 100%;
@@ -2223,7 +2228,7 @@ img.svg {
 .arlo_tm_universal_box_wrap.particle {
     height: 100vh;
     position: relative;
-    background-image: url(../img/hero/2.jpg);
+    background-image: url(../assets/img/hero/2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2242,7 +2247,7 @@ img.svg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url(../img/hero/2.jpg);
+    background-image: url(../assets/img/hero/2.jpg);
     position: relative;
     .overlay {
         position: absolute;
@@ -2294,7 +2299,7 @@ img.svg {
             z-index: 20;
         }
         .overlay_image.top {
-            background-image: url(../img/hero/2.jpg);
+            background-image: url(../assets/img/hero/2.jpg);
         }
         .overlay_color.top {
             background-color: $background-color_11;
@@ -2823,6 +2828,7 @@ img.svg {
     height: auto;
     clear: both;
     float: left;
+    margin-top: 84px;
     background-color: $background-color_15;
     padding: 30px 20px;
     display: none;
